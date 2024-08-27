@@ -1,11 +1,11 @@
 site_name: 'Eco-trans'
 site_description: 'Ecosystem transformations in the North Central US'
 site_author: Nayani Ilangakoon
-site_url: https://www.earthdatascience.org/NC_RISCC_ecosystem_transformations/
+site_url: 
 
 # Repository
 repo_name: Nayani-Ilangakoon
-repo_url: https://github.com/earthlab/NC_RISCC_ecosystem_transformations/tree/main
+repo_url: 
 edit_uri: edit/main/
 
 # Copyright
