@@ -1,4 +1,4 @@
-# NC_RISCC_ecosystem_transformations
+# Ecosystem Transformations
 
 Workflow:
 We use a combination of tools. 
