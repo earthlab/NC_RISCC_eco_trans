@@ -4,3 +4,4 @@
 # Forest - grass transitions in the North Central US
 ![Study Area](img/Screenshot 2024-01-30 084907.png)
 
+
