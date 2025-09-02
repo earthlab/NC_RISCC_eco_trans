@@ -11,7 +11,7 @@ We use a combination of tools.
 
 ----
 
-<h1>Steps:</h1>
+<h1>Steps - Forest Biomass Prediction:</h1>
 
 1. Pull Raw GEDI L4A data (in CSVs) for a pre-defined region (In our case we pulled L4A data for North Central Region's Forests) - [Download_GEDI_L4A.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Download_GEDI_L4A.ipynb)
 2. Convert the pulled GEDI L4A data to a workable shapefile format. Upload this shape file to GEE. Subsequent code will require the .shp file present on your GEE account - [Convert_And_Merge_SHP.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Convert_And_Merge_SHP.ipynb)
@@ -21,3 +21,12 @@ We use a combination of tools.
 6. We are now ready for prediction. Download the state wise data - [Download_Statewise_MODIS.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Download_Statewise_MODIS.ipynb) We also share the data via [Drive Folder](https://drive.google.com/drive/folders/1dGYQBceHyjFRh2XX7h6wn9ZqbfOc4PZm)
 7. Now predict on state wise data with - [Statewise_Prediction.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Statewise_Prediction.ipynb)
 8. The predicted biomass' raster be found statewise at [Drive Folder](https://drive.google.com/drive/folders/1gs3lxppopTk1mLWcP2B_IVT3IBpd5qYc)
+
+<h1>Steps - Combining Rangeland and Forest Biomass data:</h1>
+
+<i> See [Methods_Biomass_Dataset.docx](docs/Methods_Biomass_Dataset.docx) for detailed methods and references </i>
+1. Download the rangeland biomass data from Google Earth Engine - [BM_1_Download_RAP_data.ipynb](notebooks/BM_1_Download_RAP_data.ipynb)
+2. Mosaic the state-level forest biomass raster files (from the [Steps - Forest Biomass Prediction](#Steps_-_Forest_Biomass_Prediction) section) to create a raster for each year of the whole study area - [BM_2_Mosaic_forest_data.R](R_Scripts/BM_2_Mosaic_forest_data.R)
+3. Reproject the forest biomass data and combine with the rangeland biomass data - [BM_3_combine_forest_rangeland.R](R_Scripts/BM_3_combine_forest_rangeland.R)
+4. Compute the total biomass to generate annual raster files with 3 bands (Total BM, Forest BM, Rangeland BM) - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
+5. Stack the <i>total biomass</i> raster bands of each year to generate a single raster file with bands of <i>total biomass per year</i> - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
