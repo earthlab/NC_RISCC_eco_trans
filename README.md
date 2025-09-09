@@ -2,7 +2,7 @@
 
 Workflow:
 We use a combination of tools. 
-- For long running/batch tasks, we used Python (+ Google Earth Engine (GEE) Python SDK)
+- For long running/batch tasks, we used Python (+ Google Earth Engine (GEE) Python SDK) and R scripts
 - For final visualization tasks, Google Earth Engine was used
 
 <div align="center">
@@ -11,7 +11,9 @@ We use a combination of tools.
 
 ----
 
-<h1>Steps - Forest Biomass Prediction:</h1>
+The data was processed in two phases. The first phase led to the forest biomass prediction rasters. The second phase resulted in the rangeland biomass prediction rasters as well as an estimation of the total biomass. The steps for each phase are described below. 
+
+<h1>Phase 1 - Forest Biomass Prediction:</h1>
 
 1. Pull Raw GEDI L4A data (in CSVs) for a pre-defined region (In our case we pulled L4A data for North Central Region's Forests) - [Download_GEDI_L4A.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Download_GEDI_L4A.ipynb)
 2. Convert the pulled GEDI L4A data to a workable shapefile format. Upload this shape file to GEE. Subsequent code will require the .shp file present on your GEE account - [Convert_And_Merge_SHP.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Convert_And_Merge_SHP.ipynb)
@@ -22,7 +24,7 @@ We use a combination of tools.
 7. Now predict on state wise data with - [Statewise_Prediction.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Statewise_Prediction.ipynb)
 8. The predicted biomass' raster be found statewise at [Drive Folder](https://drive.google.com/drive/folders/1gs3lxppopTk1mLWcP2B_IVT3IBpd5qYc)
 
-<h1>Steps - Combining Rangeland and Forest Biomass data:</h1>
+<h1>Phase 2 - Combining Rangeland and Forest Biomass data:</h1>
 
 <i> See [Methods_Biomass_Dataset.docx](docs/Methods_Biomass_Dataset.docx) for detailed methods and references </i>
 1. Download the rangeland biomass data from Google Earth Engine - [BM_1_Download_RAP_data.ipynb](notebooks/BM_1_Download_RAP_data.ipynb)
