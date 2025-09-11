@@ -6,7 +6,7 @@ We use a combination of tools.
 - For final visualization tasks, Google Earth Engine was used
 
 <div align="center">
-    <img src="images/workflow.png" alt="Workflow Diagram">
+    <img src="img/NC_RISCC_Workflow_figure.png" alt="Workflow Diagram">
 </div>
 
 ----
