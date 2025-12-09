@@ -32,3 +32,12 @@ The data was processed in two phases. The first phase led to the forest biomass 
 3. Reproject the forest biomass data and combine with the rangeland biomass data - [BM_3_combine_forest_rangeland.R](R_Scripts/BM_3_combine_forest_rangeland.R)
 4. Compute the total biomass to generate annual raster files with 3 bands (Total BM, Forest BM, Rangeland BM) - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
 5. Stack the <i>total biomass</i> raster bands of each year to generate a single raster file with bands of <i>total biomass per year</i> - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
+
+<h1>Phase 3 - Predicting Ecosystem Transitions:</h1>
+<i> Nayani will add</i>
+
+<h1>Phase 4 - Predicting Biomass Change in Transition Areas:</h1>
+
+1. Resample the biomass data to the transition data resolution for each state in the North Central Region - [1_Biomass_Transition_Resample_States.ipynb](notebooks/1_Biomass_Transition_Resample_States.ipynb)
+2. Calculate the biomass up to 3 years before the tansition took place and compare that to the 3 most recent years. Caluclate the variance of these before-and-after biomass values and determine if the change is within or outside of this variance. - [2_Biomass_Transition_Analysis_States.ipynb](notebooks/2_Biomass_Transition_Analysis_States.ipynb)
+3. Clip the output from the previous step to the state boundaries - [3_Biomass_Transition_Output_Cleaning.ipynb](notebooks/3_Biomass_Transition_Output_Cleaning.ipynb) 
