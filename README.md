@@ -35,8 +35,11 @@ The data was processed in two phases. The first phase led to the forest biomass 
 
 <h1>Phase 3 - Predicting Ecosystem Transitions:</h1>
 1. Used already transformed pixels and their vegetation index time series to detect the break points and their lead time if any as transformation indicators.
+
 2. Added climate variables including precipitation, temperature (time series for precipitation temperature data), fire risk and grass invasion risk data to evaluate the impact of these drivers on incrasing/decreasing transformations
+   
 3. Added censored non-transformed data with their vegetation inex time series, climate, dire, and invasion driver variables to model the vulnerability for transformations within next 10-15 years.
+   
 4. Generated the maps of pixel basis (500 m) vuolnerability for transformation for each state.
 
 <h1>Phase 4 - Predicting Biomass Change in Transition Areas:</h1>
