@@ -1,3 +1,9 @@
+title: Ecosystem Transformations in the North Central USA
 remote_theme: pages-themes/minimal@v0.2.0
+# IMPORTANT for project pages:
+baseurl: "/NC_RISCC_eco_trans"
+url: "https://earthlab.github.io"
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+
+
