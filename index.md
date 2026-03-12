@@ -15,6 +15,8 @@ The study consists of four phases.
 Develop a time series of forest biomass (500 m resolution) using GEDI footprint based biomass density data and MODIS vegetation index time series. The full workflow and the codes used for this phase can be found [here](notebooks). The resulsts are provided per state time series from 2003-2017.
 The predicted biomass' raster be found statewise at Drive Folder
 
+![Biomass prediction workflow](images/workflow.png)
+
 ### Phase 2 - Combining Rangeland and Forest Biomass data:
 See Methods_Biomass_Dataset.docx for detailed methods and references
 
