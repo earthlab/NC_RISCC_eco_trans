@@ -7,6 +7,8 @@ Forest to grass or shrubland transitions are emerging as a major ecological risk
 ![Study Area](img/study_area.png)
 
 ## Methods
+The following workflow summarizes the four phases we developed in this study.
+
 ![Workflow](img/NC_RISCC_Workflow_figure.png)
 
 The study consists of four phases.
