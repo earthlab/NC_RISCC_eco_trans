@@ -13,31 +13,22 @@ The study consists of four phases.
 
 ### Phase 1 - Forest Biomass Prediction:
 Develop a time series of forest biomass (500 m resolution) using GEDI footprint based biomass density data and MODIS vegetation index time series. The full workflow and the codes used for this phase can be found [here](notebooks). The resulsts are provided per state time series from 2003-2017.
-The predicted biomass' raster be found statewise at Drive Folder
+The predicted biomass' raster be found statewise at this [Drive Folder](https://drive.google.com/drive/folders/18dncALa1bh-jHGAmduPqJ_tDuCAAzcDp?usp=drive_link).
 
 ![Biomass prediction workflow](images/workflow.png)
 
 ### Phase 2 - Combining Rangeland and Forest Biomass data:
-See Methods_Biomass_Dataset.docx for detailed methods and references
+See [Methods_Biomass_Dataset.docx](docs/Methods_Biomass_Dataset.docx) for detailed methods and references
 
-Download the rangeland biomass data from Google Earth Engine - BM_1_Download_RAP_data.ipynb
-Mosaic the state-level forest biomass raster files (from the Steps - Forest Biomass Prediction section) to create a raster for each year of the whole study area - BM_2_Mosaic_forest_data.R
-Reproject the forest biomass data and combine with the rangeland biomass data - BM_3_combine_forest_rangeland.R
-Compute the total biomass to generate annual raster files with 3 bands (Total BM, Forest BM, Rangeland BM) - BM_4_combine_total_BM.R
-Stack the total biomass raster bands of each year to generate a single raster file with bands of total biomass per year - BM_4_combine_total_BM.R
+We included rangeland biomass data to cover the non-forest biomass of the seven states using the data provided by [Rangland Analysis Platform](https://rangelands.app/rap/?biomass_t=herbaceous&ll=39.0000,-98.0000&z=5&biomass_v=true). 
 
 ### Phase 3 - Predicting Ecosystem Transitions:
-1. Used already transformed pixels and their vegetation index time series to detect the break points and their lead time if any as transformation indicators.
-Added climate variables including precipitation, temperature (time series for precipitation temperature data), fire risk and grass invasion risk data to evaluate the impact of these drivers on incrasing/decreasing transformations
-
-Added censored non-transformed data with their vegetation inex time series, climate, dire, and invasion driver variables to model the vulnerability for transformations within next 10-15 years.
-
-Generated the maps of pixel basis (500 m) vuolnerability for transformation for each state.
+Using [LCMAP](https://www.usgs.gov/data/lcmap-land-cover-and-land-change-sample-data) land cover data we identified the areas already transformed (1990-2017). Using already transformed pixels and their vegetation index time series we detected the break points and their lead time to recognize any transformation early warning indicators.
+Added climate variables including precipitation, temperature (time series for precipitation temperature data), fire risk and grass invasion risk data to evaluate the impact of these drivers on incrasing/decreasing transformations and produced maps of areas vulnerable for transformation within next 15 years. 
 
 ### Phase 4 - Predicting Biomass Change in Transition Areas:
-Resample the biomass data to the transition data resolution for each state in the North Central Region - 1_Biomass_Transition_Resample_States.ipynb
-Calculate the biomass up to 3 years before the tansition took place and compare that to the 3 most recent years. Caluclate the variance of these before-and-after biomass values and determine if the change is within or outside of this variance. - 2_Biomass_Transition_Analysis_States.ipynb
-Clip the output from the previous step to the state boundaries - 3_Biomass_Transition_Output_Cleaning.ipynb
+Using our biomass maps and transformed data we estimated the biomass impact due to transformations and their trends.
+
 
 ## Findings
 
