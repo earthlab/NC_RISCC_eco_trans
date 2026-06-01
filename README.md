@@ -33,7 +33,14 @@ The data was processed in two phases. The first phase led to the forest biomass 
 4. Compute the total biomass to generate annual raster files with 3 bands (Total BM, Forest BM, Rangeland BM) - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
 5. Stack the <i>total biomass</i> raster bands of each year to generate a single raster file with bands of <i>total biomass per year</i> - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
 
-<h1>Phase 3 - Predicting Ecosystem Transitions:</h1>
+<h1>Phase 3 - Predicting Biomass Change in Transition Areas:</h1>
+
+1. Resample the biomass data to the transition data resolution for each state in the North Central Region - [1_Biomass_Transition_Resample_States.ipynb](notebooks/1_Biomass_Transition_Resample_States.ipynb)
+2. Calculate the biomass up to 3 years before the tansition took place and compare that to the 3 most recent years. Caluclate the variance of these before-and-after biomass values and determine if the change is within or outside of this variance. - [2_Biomass_Transition_Analysis_States.ipynb](notebooks/2_Biomass_Transition_Analysis_States.ipynb)
+3. Clip the output from the previous step to the state boundaries - [3_Biomass_Transition_Output_Cleaning.ipynb](notebooks/3_Biomass_Transition_Output_Cleaning.ipynb)
+
+   
+<h1>Phase 4 - Predicting Ecosystem Transitions:</h1>
 1. Used already transformed pixels and their vegetation index time series derived from MODIS to detect the break points and their lead time if any as transformation indicators. A location was considered transformed if it remained in the new cover type for at least 10 consecutive years. Locations not meeting this persistence threshold were classified as non-transformed (including areas that had not yet transformed or may have initiated transition but had not stabilized). We used LCMAP landcover type data.
 
 2. Added climate variables including precipitation, temperature (time series for precipitation temperature data), burn probability and if tehre are were any fires, fire year, and other non climatic data such as elevation, soil type, and ecoregion data to evaluate the impact of these drivers on incrasing/decreasing transformations
@@ -46,8 +53,4 @@ The data was processed in two phases. The first phase led to the forest biomass 
    
 6. Produced spatially explicit probability surfaces of transformation to identify areas with higher likelihood of future ecosystem transition for each state using state based model and one map using generalized model for all states.
 
-<h1>Phase 4 - Predicting Biomass Change in Transition Areas:</h1>
 
-1. Resample the biomass data to the transition data resolution for each state in the North Central Region - [1_Biomass_Transition_Resample_States.ipynb](notebooks/1_Biomass_Transition_Resample_States.ipynb)
-2. Calculate the biomass up to 3 years before the tansition took place and compare that to the 3 most recent years. Caluclate the variance of these before-and-after biomass values and determine if the change is within or outside of this variance. - [2_Biomass_Transition_Analysis_States.ipynb](notebooks/2_Biomass_Transition_Analysis_States.ipynb)
-3. Clip the output from the previous step to the state boundaries - [3_Biomass_Transition_Output_Cleaning.ipynb](notebooks/3_Biomass_Transition_Output_Cleaning.ipynb) 
