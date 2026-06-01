@@ -34,16 +34,17 @@ The data was processed in two phases. The first phase led to the forest biomass 
 5. Stack the <i>total biomass</i> raster bands of each year to generate a single raster file with bands of <i>total biomass per year</i> - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
 
 <h1>Phase 3 - Predicting Ecosystem Transitions:</h1>
-1. Used already transformed pixels and their vegetation index time series to detect the break points and their lead time if any as transformation indicators.
+1. Used already transformed pixels and their vegetation index time series derived from MODIS to detect the break points and their lead time if any as transformation indicators. A location was considered transformed if it remained in the new cover type for at least 10 consecutive years. Locations not meeting this persistence threshold were classified as non-transformed (including areas that had not yet transformed or may have initiated transition but had not stabilized). We used LCMAP landcover type data.
 
 2. Added climate variables including precipitation, temperature (time series for precipitation temperature data), burn probability and if tehre are were any fires, fire year, and other non climatic data such as elevation, soil type, and ecoregion data to evaluate the impact of these drivers on incrasing/decreasing transformations
    
-3. Added censored non-transformed data (transformed 1, non-transformed 0) with their variables to model the predictability of transformation and then evaluated the model accuracy and performace.
+3. Used Bayesian regression models (brms) to model the probability of land cover transformation as a function of environmental and disturbance predictors. Applied censoring to non-transformed observations to account for areas that may transform in the future but had not reached the transformation threshold during the observation period. Assessed model predictive performance and accuracy using validation metrics to determine the ability of the model to distinguish transformed from non-transformed locations.
    
 4. Then modelled the probability of non-transformed pixels to be transformed using only censored data and the best model to asssess the vulnerability for transformations within next 10-15 years.
-5. We generated models at state level as well as overall general model.
    
-6. Generated the maps of pixel basis (500 m) vulnerability for transformation for each state using state based model and one map using generalized model for all states.
+5. Extended the framework to produce a general transformation detection model that can estimate transformation likelihood using the selected environmental and disturbance datasets.
+   
+6. Produced spatially explicit probability surfaces of transformation to identify areas with higher likelihood of future ecosystem transition for each state using state based model and one map using generalized model for all states.
 
 <h1>Phase 4 - Predicting Biomass Change in Transition Areas:</h1>
 
