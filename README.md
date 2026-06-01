@@ -13,7 +13,10 @@ We use a combination of tools.
 
 The data was processed in two phases. The first phase led to the forest biomass prediction rasters. The second phase resulted in the rangeland biomass prediction rasters as well as an estimation of the total biomass. The steps for each phase are described below. 
 
-<h1>Phase 1 - Forest Biomass Prediction:</h1>
+<h1>Phase 1 - Areas Already transformed:</h1>
+1. Used LCMAP landcover type data and used all the pixels within the seven states in the North Central USA (Montana, Wyoming, Colorado
+
+<h1>Phase 2 - Forest Biomass Prediction:</h1>
 
 1. Pull Raw GEDI L4A data (in CSVs) for a pre-defined region (In our case we pulled L4A data for North Central Region's Forests) - [Download_GEDI_L4A.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Download_GEDI_L4A.ipynb)
 2. Convert the pulled GEDI L4A data to a workable shapefile format. Upload this shape file to GEE. Subsequent code will require the .shp file present on your GEE account - [Convert_And_Merge_SHP.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Convert_And_Merge_SHP.ipynb)
@@ -24,7 +27,7 @@ The data was processed in two phases. The first phase led to the forest biomass 
 7. Now predict on state wise data with - [Statewise_Prediction.ipynb](https://github.com/earthlab/NC_RISCC_eco_trans/blob/main/notebooks/Statewise_Prediction.ipynb)
 8. The predicted biomass' raster be found statewise at [Drive Folder](https://drive.google.com/drive/folders/1gs3lxppopTk1mLWcP2B_IVT3IBpd5qYc)
 
-<h1>Phase 2 - Combining Rangeland and Forest Biomass data:</h1>
+<h1>Phase 3 - Combining Rangeland and Forest Biomass data:</h1>
 
 <i> See [Methods_Biomass_Dataset.docx](docs/Methods_Biomass_Dataset.docx) for detailed methods and references </i>
 1. Download the rangeland biomass data from Google Earth Engine - [BM_1_Download_RAP_data.ipynb](notebooks/BM_1_Download_RAP_data.ipynb)
@@ -33,14 +36,14 @@ The data was processed in two phases. The first phase led to the forest biomass 
 4. Compute the total biomass to generate annual raster files with 3 bands (Total BM, Forest BM, Rangeland BM) - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
 5. Stack the <i>total biomass</i> raster bands of each year to generate a single raster file with bands of <i>total biomass per year</i> - [BM_4_combine_total_BM.R](R_Scripts/BM_4_combine_total_BM.R)
 
-<h1>Phase 3 - Predicting Biomass Change in Transition Areas:</h1>
+<h1>Phase 4 - Predicting Biomass Change in Transition Areas:</h1>
 
 1. Resample the biomass data to the transition data resolution for each state in the North Central Region - [1_Biomass_Transition_Resample_States.ipynb](notebooks/1_Biomass_Transition_Resample_States.ipynb)
 2. Calculate the biomass up to 3 years before the tansition took place and compare that to the 3 most recent years. Caluclate the variance of these before-and-after biomass values and determine if the change is within or outside of this variance. - [2_Biomass_Transition_Analysis_States.ipynb](notebooks/2_Biomass_Transition_Analysis_States.ipynb)
 3. Clip the output from the previous step to the state boundaries - [3_Biomass_Transition_Output_Cleaning.ipynb](notebooks/3_Biomass_Transition_Output_Cleaning.ipynb)
 
    
-<h1>Phase 4 - Predicting Ecosystem Transitions:</h1>
+<h1>Phase 5 - Predicting Ecosystem Transitions:</h1>
 1. Used already transformed pixels and their vegetation index time series derived from MODIS to detect the break points and their lead time if any as transformation indicators. A location was considered transformed if it remained in the new cover type for at least 10 consecutive years. Locations not meeting this persistence threshold were classified as non-transformed (including areas that had not yet transformed or may have initiated transition but had not stabilized). We used LCMAP landcover type data.
 
 2. Added climate variables including precipitation, temperature (time series for precipitation temperature data), burn probability and if tehre are were any fires, fire year, and other non climatic data such as elevation, soil type, and ecoregion data to evaluate the impact of these drivers on incrasing/decreasing transformations.
